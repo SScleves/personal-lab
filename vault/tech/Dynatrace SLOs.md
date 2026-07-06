@@ -14,7 +14,7 @@ it's whether the game feels playable.
 | Game tick health | `game.tick.duration` p95 < 50 ms ([[OpenTelemetry]]) | 99% | Server-side quality — degrades under load BEFORE players notice |
 | Connect latency | `game.ws.rtt` p95 < 150 ms | 99.5% | The player-facing promise |
 | Chatbot latency | [[Gemini Chatbot]] span p95 < 3 s | 95% | The AI-observability SLO |
-| Site availability | probe VM checks ([[Azure Free Account]]) | 99.9% | Classic uptime, cheap to keep |
+| Site availability | [[New Relic]] synthetic pings on the [[GitHub Pages]] site | 99.9% | Classic uptime, zero infra |
 
 ## The demo mechanic ([[07 Demo Script]])
 

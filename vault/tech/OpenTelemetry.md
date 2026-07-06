@@ -14,7 +14,7 @@ SDKs in the workloads emit OTLP → the [[OTel Collector]] fans out.
 | agar.io-clone server ([[Game Servers]]) | traces, metrics, logs | `game.tick.duration`, `game.ws.rtt`, `game.players.active` |
 | [[Gemini Chatbot]] | traces (span per LLM call), metrics | model, token counts, latency, error class — the AI-observability story |
 | [[k3s]] cluster | k8s events, kubelet/host metrics | pod restarts (the chaos signal), node saturation |
-| Dutch-lessons site | browser/HTTP probes | availability, TTFB (probe VM on [[Azure Free Account]]) |
+| Dutch-lessons site ([[GitHub Pages]]) | HTTP probes | availability, TTFB ([[New Relic]] synthetic pings) |
 
 ## Conventions (the "standards" job bullet — decide once, enforce in code review)
 

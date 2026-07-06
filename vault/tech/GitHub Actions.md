@@ -15,6 +15,7 @@ Public also = portfolio. Consequence: secrets hygiene is non-negotiable from com
 
 ## Secrets needed (Settings → Secrets → Actions)
 
-Phase 1: `ARM_CLIENT_ID/SECRET/TENANT_ID/SUBSCRIPTION_ID` (Azure service principal).
-Phase 2: OCI auth. Phase 3+: `DYNATRACE_API_TOKEN`, `NEW_RELIC_API_KEY`, `GRAFANA_CLOUD_TOKEN`.
+Phase 1: `TF_API_TOKEN` ([[HCP Terraform]] user token — state read/write).
+Phase 2: OCI auth. Phase 3+: `DYNATRACE_API_TOKEN`, `NEW_RELIC_API_KEY`, `GRAFANA_CLOUD_TOKEN`;
+GHCR image pushes use a PAT with `write:packages` ([[Docker]]).
 Add per phase, never earlier — least privilege, least standing surface.

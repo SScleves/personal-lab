@@ -7,10 +7,15 @@ tags: [moc]
 One repo, €0, every job-offer bullet demonstrable. The design lives in `ARCHITECTURE.md` (repo root);
 this vault is the **how**. Open the graph view — every note links to what it touches.
 
-## Phases (do them in order)
+## Start here
+
+- **[[08 Month Plan]]** — the week-by-week schedule with exercises per technology ⭐
+- **[[09 Signup Checklist]]** — every account, its status, and when it's needed
+
+## Phases (the detailed guides, in order)
 
 1. [[01 Phase 0 — Free Tiers and Architecture]] — ✅ done 2026-07-06
-2. [[02 Phase 1 — Accounts, Repo, State]] — ⬅️ **you are here**
+2. [[02 Phase 1 — Accounts, Repo, State]] — ⬅️ **you are here** (repo ✅, HCP 🟡, OCI ⬜)
 3. [[03 Phase 2 — Cluster and Agones]]
 4. [[04 Phase 3 — OTel and Dynatrace]]
 5. [[05 Phase 4 — New Relic and Comparison]]
@@ -21,7 +26,8 @@ this vault is the **how**. Open the graph view — every note links to what it t
 
 - **Code & CI**: [[Terraform]] · [[GitHub Actions]] · [[HCP Terraform]] (state) · [[Secrets Hygiene]]
 - **Cloud & hosting**: [[OCI Always Free]] · [[GitHub Pages]] · ([[Azure Free Account]] — dropped) — limits: [[Free Tier Limits]]
-- **Platform**: [[k3s]] · [[Agones]] · [[Game Servers]]
+- **Platform**: [[k3s]] · [[Agones]] · [[Docker]] · [[Game Servers]]
+- **Data (stretch)**: [[MongoDB Atlas]] (leaderboard + DB observability)
 - **Telemetry**: [[OpenTelemetry]] · [[OTel Collector]] (the fan-out heart)
 - **Backends**: [[Dynatrace]] ([[Dynatrace SLOs]] · [[Dynatrace Workflows]]) · [[New Relic]] · [[Grafana Cloud]] · [[Elastic Stack]]
 - **Load & chaos**: [[k6]] · chaos CronJob (in [[03 Phase 2 — Cluster and Agones]])
