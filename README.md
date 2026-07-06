@@ -13,6 +13,7 @@ Personal accounts only (github.com, gmail, Azure free, OCI free). Nothing here t
 
 | Path | What |
 |---|---|
+| `CLAUDE.md` | **AI assistants start here** — session protocol, hard rules, decisions already made |
 | `ARCHITECTURE.md` | The design: components, data flows, free-tier limits, what dies when, €0 proof |
 | `vault/` | Obsidian guide — phases, per-technology notes, demo script. Start at `00 Home` |
 | `terraform/` | All infrastructure as code. `envs/lab` is the only environment |

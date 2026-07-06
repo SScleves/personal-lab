@@ -1,6 +1,7 @@
 # HANDOFF-STATE — read me first when resuming
 
-*Last update: 2026-07-06 late evening (end of the Phase-0/1 session)*
+*Last update: 2026-07-07 (end of the Phase-0/1 session). Any Claude on any machine: read
+`CLAUDE.md` first — session protocol and hard rules — then this file top to bottom.*
 
 ## EXACT resume point
 
