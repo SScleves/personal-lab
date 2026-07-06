@@ -35,6 +35,11 @@
    verify Supabase RLS once), thetruth (hygiene + Santi's BOOK "Something Doesn't Fit" built as a
    site: book/source.txt → _build/build-book.ps1 → book/*.html; enable Pages on that repo).
    RUM plan for all frontends: vault/tech/Frontend RUM.md. Commits made locally — Santi pushes.
+10. 2026-07-07: thetruth WEBSITE reworked in the book's tone (new index/about/contact + css/site.css;
+    template lorem-ipsum pages + demo posts deleted — recoverable from git history). Full GitHub
+    how-to: vault/tech/GitHub Estate Guide.md ⭐. Terraform reconciliation skeleton:
+    terraform/modules/github-estate (import-first, commented until PAT exists).
+    PENDING SANTI: enable Pages on thetruth (Settings→Pages→main→root) — book 404s until then.
 
 ## Where we are
 

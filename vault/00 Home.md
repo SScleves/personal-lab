@@ -25,6 +25,7 @@ this vault is the **how**. Open the graph view — every note links to what it t
 ## The stack, by layer
 
 - **Code & CI**: [[Terraform]] · [[GitHub Actions]] · [[HCP Terraform]] (state) · [[Secrets Hygiene]]
+- **Running your stuff**: [[GitHub Estate Guide]] ⭐ — repos, Pages, the book workflow, notes app, troubleshooting
 - **Cloud & hosting**: [[OCI Always Free]] · [[GitHub Pages]] · ([[Azure Free Account]] — dropped) — limits: [[Free Tier Limits]]
 - **Platform**: [[k3s]] · [[Agones]] · [[Docker]] · [[Game Servers]]
 - **Data (stretch)**: [[MongoDB Atlas]] (leaderboard + DB observability)
