@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>personal-lab — doc search</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, Segoe UI, sans-serif; background: #14171c; color: #d7dde5; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 32px 20px 80px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: #8b96a5; font-size: 13px; margin-bottom: 20px; }
+  input { width: 100%; padding: 12px 14px; font-size: 16px; border-radius: 8px;
+          border: 1px solid #333c48; background: #1c2027; color: #e8edf3; outline: none; }
+  input:focus { border-color: #5b8def; }
+  .count { color: #8b96a5; font-size: 12px; margin: 10px 2px; }
+  .hit { background: #1a1e25; border: 1px solid #262c36; border-radius: 8px;
+         padding: 12px 14px; margin-bottom: 10px; }
+  .hit a { color: #7fb0ff; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .hit a:hover { text-decoration: underline; }
+  .path { color: #6d7a8b; font-size: 12px; margin: 2px 0 6px; font-family: Consolas, monospace; }
+  .snip { font-size: 13px; color: #aeb8c4; line-height: 1.5; }
+  .snip b { color: #ffd479; font-weight: 600; }
+  kbd { background:#262c36; border-radius:4px; padding:1px 5px; font-size:11px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔍 personal-lab documentation search</h1>
+  <div class="sub">Offline full-text search over every markdown file in the repo.
+    Results open the rendered page on GitHub. Rebuild after doc changes:
+    <kbd>powershell _build\build-search.ps1</kbd></div>
+  <input id="q" type="search" placeholder="tick rate SLO, arm64, free tier, chaos cron…" autofocus>
+  <div class="count" id="count"></div>
+  <div id="results"></div>
+</div>
+<script>
+const DOCS = /*__DOCS__*/[];
+const GH = "https://github.com/SScleves/personal-lab/blob/main/";
+const q = document.getElementById("q"), out = document.getElementById("results"),
+      count = document.getElementById("count");
+function esc(s){ return s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function search(term){
+  const words = term.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+  if (!words.length){ out.innerHTML=""; count.textContent = DOCS.length + " documents indexed"; return; }
+  const scored = [];
+  for (const d of DOCS){
+    const t = d.t.toLowerCase(), x = d.x.toLowerCase();
+    let score = 0, allFound = true;
+    for (const w of words){
+      const inT = t.includes(w), nX = x.split(w).length - 1;
+      if (!inT && nX === 0){ allFound = false; break; }
+      score += (inT ? 30 : 0) + Math.min(nX, 10) * 3;
+    }
+    if (allFound) scored.push([score, d]);
+  }
+  scored.sort((a,b) => b[0]-a[0]);
+  count.textContent = scored.length + " result" + (scored.length===1?"":"s");
+  out.innerHTML = scored.slice(0, 40).map(([s, d]) => {
+    const x = d.x, lx = x.toLowerCase();
+    let i = lx.indexOf(words[0]); if (i < 0) i = 0;
+    const a = Math.max(0, i - 80);
+    let snip = esc(x.slice(a, a + 240));
+    for (const w of words)
+      snip = snip.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi"), "<b>$1</b>");
+    return '<div class="hit"><a href="' + GH + encodeURI(d.p) + '" target="_blank">' + esc(d.t) +
+           '</a><div class="path">' + esc(d.p) + '</div><div class="snip">…' + snip + '…</div></div>';
+  }).join("");
+}
+q.addEventListener("input", () => search(q.value));
+search("");
+</script>
+</body>
+</html>

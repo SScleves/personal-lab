@@ -19,6 +19,7 @@ Personal accounts only (github.com, gmail, Azure free, OCI free). Nothing here t
 | `terraform/` | All infrastructure as code. `envs/lab` is the only environment |
 | `.github/workflows/` | CI: gitleaks on every push, terraform plan on PR, apply on main |
 | `HANDOFF-STATE.md` | Where work stopped last session — read this first when resuming |
+| `search.html` | Offline full-text search over all docs (double-click from any clone). Rebuild: `powershell _build\build-search.ps1` |
 
 ## The one-line pitch
 

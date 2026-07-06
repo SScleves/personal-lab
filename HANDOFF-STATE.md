@@ -21,7 +21,10 @@
    deliberately NOT in this public file.
 6. THE PLAN to follow: `vault/08 Month Plan.md` (week-by-week + exercises per tech) and
    `vault/09 Signup Checklist.md` (all accounts + status). New since the last commit:
-   those two + `vault/tech/Docker.md` + `vault/tech/MongoDB Atlas.md` — **needs commit+push**.
+   those two + `vault/tech/Docker.md` + `vault/tech/MongoDB Atlas.md` + `CLAUDE.md` +
+   doc search (`search.html` + `_build/`) — **needs commit+push**.
+7. Doc-search convention: after changing any .md, rerun `powershell _build\build-search.ps1`
+   and commit the regenerated `search.html` alongside.
 
 ## Where we are
 

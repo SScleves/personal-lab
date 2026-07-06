@@ -54,3 +54,5 @@ bullet of an Observability-Specialist job offer demonstrable. You (Claude) assis
 `ARCHITECTURE.md` = the design + job-offer mapping + what-dies-when. `vault/` = Obsidian guide
 (open the folder as a vault; `00 Home` → phases → `tech/` notes). `terraform/envs/lab` = the one
 environment; modules light up per phase. CI = gitleaks always, terraform plan on PR / apply on main.
+`search.html` = offline doc search; **rebuild it after any doc change**
+(`powershell _build\build-search.ps1`) so the committed copy stays fresh.
