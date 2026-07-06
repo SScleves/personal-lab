@@ -1,0 +1,12 @@
+# Install once per clone:  pip install pre-commit && pre-commit install
+# Every commit is then scanned for secrets before it can be created.
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.3   # pin; bump deliberately
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.99.0
+    hooks:
+      - id: terraform_fmt
+      # terraform_validate needs an init'ed working dir — add it back after Phase 1 step D

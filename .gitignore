@@ -1,0 +1,31 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+!example.tfvars
+crash.log
+override.tf
+override.tf.json
+.terraformrc
+terraform.rc
+*.tfplan
+
+# Secrets / credentials — never committed, no exceptions
+*.pem
+*.key
+*.pfx
+kubeconfig*
+*.kubeconfig
+.env
+.env.*
+**/secrets/
+
+# Obsidian workspace noise (keep the vault content, not the UI state)
+vault/.obsidian/workspace*
+vault/.obsidian/cache
+
+# OS / editor
+Thumbs.db
+.DS_Store
