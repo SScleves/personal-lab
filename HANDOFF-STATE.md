@@ -31,6 +31,10 @@
    - `ALIENWARE-MISSION.md` — games laptop: Dutch site → GitHub Pages (sanitize first!),
      assess the 2 games as workloads (report only), set up as demo/player + k6 station.
    Both: host-specific/personal files stay OUT of this public repo.
+9. 2026-07-07: SScleves estate expanded — werkplek (naming aligned, RUM candidate #1; Santi must
+   verify Supabase RLS once), thetruth (hygiene + Santi's BOOK "Something Doesn't Fit" built as a
+   site: book/source.txt → _build/build-book.ps1 → book/*.html; enable Pages on that repo).
+   RUM plan for all frontends: vault/tech/Frontend RUM.md. Commits made locally — Santi pushes.
 
 ## Where we are
 

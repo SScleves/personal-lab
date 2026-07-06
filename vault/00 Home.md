@@ -33,6 +33,7 @@ this vault is the **how**. Open the graph view — every note links to what it t
 - **Load & chaos**: [[k6]] · chaos CronJob (in [[03 Phase 2 — Cluster and Agones]])
 - **Analytics & AI**: [[Databricks]] · [[Airflow and Astronomer]] · [[Gemini Chatbot]]
 - **Optional second environment**: [[Home Server Docker Stack]] (Plex/*arr — real workloads, strict privacy rules)
+- **Personal frontends**: [[Frontend RUM]] — werkplek, The Truth + the book, Dutch site
 
 ## Standing rules
 
