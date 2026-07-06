@@ -26,4 +26,10 @@ Santi's existing Linux Docker host: Plex, Jellyseerr, Radarr, Sonarr, Prowlarr, 
 
 ## When
 
-After Phase 3 exists (the fan-out is running) — it's a 1-evening add, not a phase.
+Anytime — it's independent of the OCI cluster and can run as a parallel track from the laptop.
+
+## How
+
+**The laptop's Claude follows `HOME-SERVER-MISSION.md` (repo root)** — 4 milestones: metrics to
+both backends → filtered logs → alerts (disk pressure, container down, transcode spike) →
+OneAgent-vs-OTel comparison. All host-specific files stay in `~/observability/`, outside this repo.
