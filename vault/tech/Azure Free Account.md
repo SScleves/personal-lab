@@ -1,25 +1,30 @@
 ---
-tags: [tech, cloud]
+tags: [tech, cloud, dropped]
 ---
 
-# Azure Free Account
+# Azure Free Account — DROPPED 2026-07-06
 
-Role in the lab: the **work-mirror** — [[Terraform]] remote state (blob), Dutch-lessons static site
-hosting, one tiny probe VM. NOT the cluster host (free VMs are too small — that's [[OCI Always Free]]).
+Azure was designed in as the "work-mirror" (state blob, static site, probe VM) but the free-account
+signup proved impossible from Santi's identities: the gmail address is entangled with a
+GitHub-created Microsoft identity, and the signup loops forever on credential creation
+(a known failure mode of the "Sign in with GitHub" flow; even the pre-created-MSA path looped).
 
-## Verified numbers (2026-07-06, sources in [[Free Tier Limits]])
+## What replaced it
 
-- $200 credit / 30 days · ~55 services free 12 months · always-free list. Nothing auto-charges
-  until you explicitly upgrade to pay-as-you-go; account disables instead.
-- Free VMs: **B1s, B2pts v2 (Arm), B2ats v2 (AMD)** — 750 h/month pooled, 12 months, ~1 GiB RAM class.
-  Must be created via the portal's **Free services** flow or they bill anyway. Use `smalldisk` images
-  (free disk allowance = 2×64 GB P6; default images are 127 GB).
-- Blob for tfstate: 5 GB free 12 months, then a few-KB state ≈ <$0.05/mo. Keep LRS, versioning off.
-- AKS control plane is free forever but nodes are paid VMs → [[k3s]] instead.
+| Azure job | Replacement |
+|---|---|
+| Terraform remote state | [[HCP Terraform]] (free, no card, state + locking) |
+| Dutch-lessons site | [[GitHub Pages]] |
+| Probe VM | [[New Relic]] free synthetics (unlimited ping monitors) |
 
-## ⚠️ The month-13 trap
+Net effect: one less account, one less card, no month-13 billing trap — the design got simpler.
 
-After PAYG upgrade, the VM that was free in month 12 **silently bills in month 13**.
-Calendar reminder at month 11 is a Phase 1 step, not a nice-to-have.
+## Plot twist (same day): account created after all — but the design stays zero-Azure
 
-Signup: credit card (verification, ~$1 hold) + phone; one free account per person.
+A fresh outlook.com identity (created clean, never via GitHub) broke the signup loop and the
+account now EXISTS. Decision: keep the simpler zero-Azure wiring ([[HCP Terraform]] state,
+[[GitHub Pages]], [[New Relic]] synthetics) and **reserve the Azure account for Phase 5:
+an Azure AI Foundry trial on the [[Gemini Chatbot]]** — the one job only Azure can do here
+(AI Foundry is the literal job-offer keyword). The Phase 0 Azure research in [[Free Tier Limits]]
+applies whenever that day comes. If the account is ever used for real resources: the month-13
+billing trap and free-services-flow rules in the history of this note apply.

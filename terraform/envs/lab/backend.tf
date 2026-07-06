@@ -1,13 +1,20 @@
-# Remote state in Azure blob — the same pattern as work, on the free tier.
-# BOOTSTRAP ORDER (chicken & egg): the storage account is created FIRST with local state
-# (see modules/azure-state/README.md), then this backend block is uncommented and
-# `terraform init -migrate-state` moves the state in.
+# Remote state in HCP Terraform (free tier) — replaced the Azure blob backend 2026-07-06
+# after Azure account signup proved impossible (gmail/GitHub identity loop).
+#
+# BOOTSTRAP (Phase 1 step D):
+# 1. Sign up at https://app.terraform.io/public/signup/account (email only, no card).
+# 2. Create organization (e.g. "sscleves-lab") and workspace "lab".
+# 3. Workspace → Settings → Execution Mode → LOCAL (HCP stores state + locks;
+#    GitHub Actions / laptop runs terraform itself).
+# 4. Uncomment the block below, set your org name, then `terraform init`.
+# 5. User Settings → Tokens → create an API token → GitHub secret TF_API_TOKEN
+#    (and locally: `terraform login`).
 #
 # terraform {
-#   backend "azurerm" {
-#     resource_group_name  = "rg-lab-state"
-#     storage_account_name = "stlabstate<uniq>"   # globally unique, lowercase
-#     container_name       = "tfstate"
-#     key                  = "lab.tfstate"
+#   cloud {
+#     organization = "sscleves-lab"
+#     workspaces {
+#       name = "lab"
+#     }
 #   }
 # }

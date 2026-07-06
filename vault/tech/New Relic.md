@@ -19,5 +19,9 @@ The standing free backend (forever, no card) and the vendor-comparison counterpa
 1. OTLP exporter in the [[OTel Collector]] (`otlp.nr-data.net`, license key via k8s secret).
 2. `newrelic-config` module ([[Terraform]]): NRQL drop rules for chatty k8s namespaces +
    **ingest alert at 50 GB** — before any dashboard work.
-3. Parity dashboards mirroring the [[Dynatrace SLOs]] views → raw material for the comparison doc
+3. **Synthetics** (✅ verified 2026-07-06): simple **ping monitors don't consume any check quota** —
+   these ARE the lab's uptime probes ([[GitHub Pages]] site + game endpoints), down to 1-min cadence.
+   ⚠️ Non-ping (browser/scripted) monitors get only **500 free checks/month** — a single 5-min
+   browser monitor burns ~8,900/mo. Ping only.
+4. Parity dashboards mirroring the [[Dynatrace SLOs]] views → raw material for the comparison doc
    ([[05 Phase 4 — New Relic and Comparison]]).

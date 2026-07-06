@@ -4,35 +4,35 @@ tags: [phase, next]
 
 # Phase 1 — Accounts, repo, state (effort: LOW — signups and boilerplate)
 
-Goal: repo live on GitHub, both cloud accounts exist, Terraform remote state works.
-Ends visibly monitored: the gitleaks Action runs green on the first push.
+Goal: repo live on GitHub ✅, OCI account exists, Terraform remote state works (HCP Terraform).
+**Azure was dropped 2026-07-06** — signup impossible (gmail/GitHub Microsoft-identity loop);
+replacements: [[HCP Terraform]] (state), [[GitHub Pages]] (site), [[New Relic]] synthetics (probes).
 
-## Steps (each < 1 minute unless marked)
+## Steps
 
-### A. Repo (do this first — everything else hangs off it)
-1. Terminal: `cd C:\Repos\personal-lab` → `git init -b main`
-2. `pip install pre-commit` then `pre-commit install` ([[Secrets Hygiene]] — the hook is already configured)
-3. `git add . && git commit -m "lab skeleton: architecture, vault, terraform, CI"`
-4. Browser: github.com → New repository → name `personal-lab` → **Public** → no README (we have one) → Create
-5. Follow GitHub's "push an existing repository" two commands. Refresh → Actions tab → gitleaks runs green. 📸
-6. Settings → Branches → protect `main` (require PR). Works on free because the repo is public — [[GitHub Actions]].
-7. **Laptop**: `git clone https://github.com/SScleves/personal-lab.git`, open `vault/` in Obsidian → this guide travels.
+### A. Repo — ✅ DONE 2026-07-06
+Pushed to https://github.com/SScleves/personal-lab (public), gitleaks green, branch protection on,
+commit identity = personal (repo-local config). Laptop clone + Obsidian vault = step 7 if not done.
+Still pending on the work machine: `winget install Python.Python.3.12` → `pip install pre-commit` →
+`pre-commit install` ([[Secrets Hygiene]] local guard).
 
-### B. Azure (work-mirror account) — [[Azure Free Account]]
-8. azure.microsoft.com/free → Start free → personal Microsoft account (gmail works via MSA) —
-   needs credit card (verification only, ~$1 hold) + phone. *(~10 min)*
-9. **Set the calendar reminder NOW**: "+11 months: Azure free VMs start billing after PAYG upgrade — review".
-10. Portal → note subscription ID. Create the state module vars later — [[Terraform]] has the bootstrap order.
+### B. HCP Terraform (state backend) — [[HCP Terraform]]
+1. https://app.terraform.io/public/signup/account → sign up with gmail (no card).
+2. Create organization (e.g. `sscleves-lab`) → create workspace `lab` (CLI-driven workflow).
+3. Workspace → Settings → Execution Mode → **Local** (HCP holds state+locks; CI runs terraform).
+4. User Settings → Tokens → create API token → GitHub secret `TF_API_TOKEN`
+   (https://github.com/SScleves/personal-lab/settings/secrets/actions); locally: `terraform login`.
+5. Uncomment the `cloud {}` block in `terraform/envs/lab/backend.tf`, set the org name,
+   `terraform init` — remote state live. 📸
 
 ### C. OCI (compute account) — [[OCI Always Free]]
-11. Pick the home region BEFORE signup (it's permanent) — quieter region = better free-ARM availability.
-12. oracle.com/cloud/free → sign up (card for verification, stays $0). *(~10 min)*
+6. Pick home region BEFORE signup (permanent; from NL: eu-marseille-1/eu-paris-1 quieter than
+   eu-amsterdam-1). https://www.oracle.com/cloud/free/ — card for verification only.
+7. **Note which A1 free shape you get (4 OCPU/24 GB or 2/12)** — it decides the Phase 2 layout.
 
-### D. First terraform apply *(~15 min)*
-13. `cd terraform\envs\lab` → fill `modules/azure-state` (RG + storage account, **LRS**, versioning off)
-14. `terraform init && terraform apply` with LOCAL state → uncomment `backend.tf` →
-    `terraform init -migrate-state` → remote state lives in the free blob. 📸 the container in the portal.
-15. Repo → add the ARM_* secrets (Settings → Secrets → Actions) so the [[GitHub Actions]] plan/apply pipeline works.
-16. Update `HANDOFF-STATE.md`, commit via PR — watch plan-on-PR run. Phase 1 done.
+### D. Site to GitHub Pages — [[GitHub Pages]]
+8. Copy the Dutch-lessons site into a `site/` folder (or its own repo) → Settings → Pages →
+   deploy from branch (or the Pages action). URL live = the probe target for Phase 4 synthetics.
 
+Ends visibly monitored: gitleaks green ✅ + terraform plan/apply green against HCP state.
 Next: [[03 Phase 2 — Cluster and Agones]]

@@ -1,11 +1,6 @@
 # One environment: lab. Modules light up phase by phase.
-
-module "azure_state" {
-  source = "../../modules/azure-state"
-  # Phase 1 — resource group + storage account + tfstate container (free tier)
-  location             = var.location
-  storage_account_name = var.storage_account_name
-}
+# State backend: HCP Terraform (see backend.tf). Site hosting: GitHub Pages (no terraform needed).
+# Uptime probes: New Relic free synthetics (managed in newrelic-config, Phase 4).
 
 # module "oci_cluster" {
 #   source = "../../modules/oci-cluster"
@@ -20,7 +15,7 @@ module "azure_state" {
 
 # module "newrelic_config" {
 #   source = "../../modules/newrelic-config"
-#   # Phase 4 — ingest drop rule + 50 GB guard alert + parity dashboards
+#   # Phase 4 — ingest drop rule + 50 GB guard alert + synthetics (site/game ping) + parity dashboards
 # }
 
 # module "grafana_cloud" {

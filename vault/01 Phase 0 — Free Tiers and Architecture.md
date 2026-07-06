@@ -13,8 +13,8 @@ The architecture (components, data flow, what-dies-when, €0 proof) is `ARCHITE
    3-month runway. Insurance: every tenant config is [[Terraform]] code, so a fresh trial tenant is a
    ~10-minute re-apply.
 2. **[[Azure Free Account]] VMs are ~1 GiB RAM** — too small for [[k3s]] + [[Agones]] + [[Elastic Stack]].
-   Hence [[OCI Always Free]] (4 vCPU / 24 GB, never expires) hosts the cluster; Azure keeps the
-   work-mirror jobs: remote state, the Dutch-lessons site, a tiny probe VM.
+   Hence [[OCI Always Free]] hosts the cluster. *(Post-script: Azure was then dropped entirely on
+   2026-07-06 — signup loop; [[HCP Terraform]] + [[GitHub Pages]] + [[New Relic]] synthetics took its jobs.)*
 3. **Trial-then-fallback is the pattern** for anything without a free tier: [[Airflow and Astronomer]]
    (14 days → local Astro CLI), Elastic Cloud (14 days → self-hosted Basic on the cluster).
 

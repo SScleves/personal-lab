@@ -10,14 +10,14 @@ The spine of the lab: clouds, cluster bootstrap, AND all observability config
 ## Layout (repo `terraform/`)
 
 - `envs/lab/` — the single environment; modules enabled phase by phase in `main.tf`.
-- `modules/azure-state` · `oci-cluster` · `dynatrace-config` · `newrelic-config` · `grafana-cloud`
+- `modules/oci-cluster` · `dynatrace-config` · `newrelic-config` · `grafana-cloud`
   — each README says what belongs in it and its gotchas.
 
-## Bootstrap order (chicken & egg)
+## State backend: [[HCP Terraform]] (no bootstrap chicken-and-egg)
 
-1. Apply `azure-state` with **local** state → storage account exists.
-2. Uncomment `envs/lab/backend.tf` → `terraform init -migrate-state`.
-3. Everything after lives in remote state ([[Azure Free Account]] blob, ~free forever).
+Create org + workspace `lab` in the HCP UI (Phase 1 step B), set Local execution mode,
+uncomment the `cloud {}` block in `envs/lab/backend.tf`, `terraform init` — done.
+No storage infra to pre-create (this replaced the Azure blob design, 2026-07-06).
 
 ## Rules
 

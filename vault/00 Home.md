@@ -19,8 +19,8 @@ this vault is the **how**. Open the graph view — every note links to what it t
 
 ## The stack, by layer
 
-- **Code & CI**: [[Terraform]] · [[GitHub Actions]] · [[Secrets Hygiene]]
-- **Clouds**: [[Azure Free Account]] · [[OCI Always Free]] — limits: [[Free Tier Limits]]
+- **Code & CI**: [[Terraform]] · [[GitHub Actions]] · [[HCP Terraform]] (state) · [[Secrets Hygiene]]
+- **Cloud & hosting**: [[OCI Always Free]] · [[GitHub Pages]] · ([[Azure Free Account]] — dropped) — limits: [[Free Tier Limits]]
 - **Platform**: [[k3s]] · [[Agones]] · [[Game Servers]]
 - **Telemetry**: [[OpenTelemetry]] · [[OTel Collector]] (the fan-out heart)
 - **Backends**: [[Dynatrace]] ([[Dynatrace SLOs]] · [[Dynatrace Workflows]]) · [[New Relic]] · [[Grafana Cloud]] · [[Elastic Stack]]

@@ -1,7 +1,7 @@
 # Mirrors the work pattern: plan on PR, apply on main.
-# Needs repo secrets (Settings → Secrets → Actions) before first run:
-#   ARM_CLIENT_ID / ARM_CLIENT_SECRET / ARM_TENANT_ID / ARM_SUBSCRIPTION_ID  (Azure SP for state + site)
-#   OCI_* auth vars, DYNATRACE_API_TOKEN, NEW_RELIC_API_KEY, GRAFANA_CLOUD_TOKEN — added per phase.
+# State backend: HCP Terraform (workspace in LOCAL execution mode — CI runs terraform, HCP holds state).
+# Needs repo secrets: TF_API_TOKEN (HCP Terraform user token, Phase 1 step D).
+# Later phases add: OCI_* auth, DYNATRACE_API_TOKEN, NEW_RELIC_API_KEY, GRAFANA_CLOUD_TOKEN.
 name: terraform
 on:
   pull_request:
@@ -21,15 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - run: terraform init
       - run: terraform fmt -check -recursive
       - run: terraform validate
       - run: terraform plan -no-color
-        env:
-          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
   apply:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -37,10 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - run: terraform init
       - run: terraform apply -auto-approve
-        env:
-          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}

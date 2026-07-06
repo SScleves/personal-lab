@@ -15,13 +15,14 @@ mapping" below.
                                         │ terraform
               ┌─────────────────────────┴──────────────────────────┐
               ▼                                                    ▼
-┌─ AZURE free account (work-mirror) ──────────┐   ┌─ OCI always-free ARM (the muscle) ─────────┐
-│ · Blob container → Terraform remote state   │   │ 1× Ampere A1 VM (4 vCPU / 24 GB / 200 GB)  │
-│ · Static hosting → Dutch-lessons site       │   │ └ k3s single node                          │
-│    └ chatbot API → Gemini free (Groq fbk)   │   │    ├ Agones (controller + fleet CRDs)      │
-│ · 1× free B-series VM (1 GiB): synthetic    │   │    │  └ GameServer fleet (Minecraft-class) │
-│   probe box pinging the game + site         │   │    ├ chaos CronJob (kill gameserver pods)  │
-└─────────────────────────────────────────────┘   │    ├ OTel Collector gateway (fan-out)      │
+┌─ No-cloud services (all free forever) ──────┐   ┌─ OCI always-free ARM (the muscle) ─────────┐
+│ · HCP Terraform → remote state + locking    │   │ 1× Ampere A1 VM (design assumes 2/12,      │
+│ · GitHub Pages → Dutch-lessons site         │   │   hope for 4 OCPU/24 GB — verify at signup)│
+│    └ chatbot API → Gemini free (Groq fbk)   │   │ └ k3s single node                          │
+│ · New Relic synthetics → uptime probes      │   │    ├ Agones (controller + fleet CRDs)      │
+│   (site + game endpoints, ping monitors)    │   │    │  └ GameServer fleet (agar.io / MC)    │
+└─────────────────────────────────────────────┘   │    ├ chaos CronJob (kill gameserver pods)  │
+                                                  │    ├ OTel Collector gateway (fan-out)      │
                                                   │    ├ Elasticsearch + Kibana (free Basic)   │
                                                   │    └ k6 jobs (player-swarm load tests)     │
                                                   └───────────────┬────────────────────────────┘
@@ -49,8 +50,8 @@ mapping" below.
 
 | Decision | Choice | Why |
 |---|---|---|
-| Compute home | **OCI always-free A1** (24 GB) | Only €0 host big enough for Agones + game server + ELK. Azure free VMs are ~1 GiB. Never expires. |
-| Azure's role | State, static site, probe VM | Mirrors the work pattern (remote state, RG structure) — the pedagogy — without needing RAM. |
+| Compute home | **OCI always-free A1** | Only €0 host big enough for Agones + game server + ELK. Never expires. |
+| Azure | **DROPPED 2026-07-06** | Signup impossible (gmail/GitHub Microsoft-identity loop). Replaced by: HCP Terraform (state), GitHub Pages (site), New Relic synthetics (probes). Cost of the drop: the hands-on-Azure garnish for the AI Foundry bullet — recoverable later via a standalone Azure AI Foundry trial if an account ever works. |
 | Kubernetes | k3s, not AKS | AKS control plane is free but nodes are paid VMs. k3s on the free VM = only true €0 k8s. |
 | Repo visibility | **Public** | Unlimited Actions minutes, branch protection on free plan, portfolio piece. Gitleaks from commit #1. |
 | Dynatrace | Existing tenant (free until **2026-10**) | 3-month runway, no trial churn. All config via Terraform provider so a future tenant is a ~10-min re-apply. |
@@ -64,17 +65,16 @@ mapping" below.
 |---|---|---|
 | Day 14 (Astronomer signup +14) | Astro trial ($20 credit likely first) | Local Astro CLI (free, Docker) — export deployment config before day 14; hard-deleted day ~17 |
 | **2026-10** | Dynatrace tenant | New 15-day trials (config re-applied by Terraform in minutes) or Playground for UI-only practice |
-| Azure month 12 | Free VM hours, blob free quota | tfstate costs <$0.05/mo; probe VM off; site → GitHub Pages. **Calendar reminder month 11 — after PAYG upgrade the VM bills silently in month 13.** |
-| Never | OCI A1, New Relic 100 GB, Grafana Cloud, Databricks Free Edition, Elastic Basic self-hosted, GitHub, Gemini free | — |
+| Never | OCI A1, New Relic 100 GB, Grafana Cloud, Databricks Free Edition, Elastic Basic self-hosted, GitHub + Pages, HCP Terraform free, Gemini free | — |
 
 ## €0 verification
 
-Azure: only free-eligible SKUs, created via the portal "Free services" flow, `smalldisk` image, one VM ≤750 h.
-OCI: single A1 within 4 OCPU/24 GB always-free shape; no paid services enabled. New Relic: hard-stops (no card
-on file, cannot bill); drop-rule + alert at 50 GB. Grafana/Databricks/Gemini/Groq: no card required at all.
-Astronomer trial: no card — expiry = deletion, not billing. Elastic: self-hosted Basic license, $0.
-The only card that exists anywhere is the Azure/OCI signup verification — both accounts stay inside
-always-free/free-tier boundaries and Azure does not auto-charge until explicitly upgraded to PAYG.
+OCI: single A1 within the always-free shape; no paid services enabled. New Relic: hard-stops (no card
+on file, cannot bill); drop-rule + alert at 50 GB. HCP Terraform: free tier, no card (lab is a handful of
+resources, nowhere near the cap). GitHub Pages: free on the public repo. Grafana/Databricks/Gemini/Groq:
+no card required at all. Astronomer trial: no card — expiry = deletion, not billing. Elastic: self-hosted
+Basic license, $0. The only card anywhere is OCI's signup verification — the account stays inside
+always-free boundaries.
 
 ## Job-offer mapping
 

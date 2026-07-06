@@ -8,7 +8,9 @@ The Phase 0 research table. Re-verify anything here before relying on it after ~
 
 | Service | Free offer | Expiry | Where it bites |
 |---|---|---|---|
-| [[Azure Free Account]] | $200/30d + 12-mo services + always-free | Month 13 trap | Free VMs ≈1 GiB RAM; 750 h = one VM 24/7; portal "Free services" flow only; smalldisk images |
+| [[Azure Free Account]] | ~~$200/30d + 12-mo + always-free~~ **DROPPED** (signup loop) | — | Research kept for a possible future AI Foundry trial |
+| [[HCP Terraform]] | 500 managed resources, state+locking, no card (✅ verified) | Never | Over-cap = blocked runs, not a bill; 1 concurrent run (irrelevant solo) |
+| [[GitHub Pages]] | Free static hosting on public repos (✅ verified) | Never | 100 GB/mo soft bandwidth, 1 GB site; static only (chatbot API lives on the cluster) |
 | [[OCI Always Free]] | ARM A1: 4 OCPU/24 GB — **possibly cut to 2/12 June 2026 (unofficial)** | Never | Verify shape at signup; capacity scarcity; home region permanent; PAYG upgrade = priority + maybe 4/24 |
 | [[Dynatrace]] | Santi's tenant to 2026-10; else 15-day trials | 2026-10 | Tenant deleted 30d post-expiry → all config as [[Terraform]] code; paid standing std workflow ≈$22/mo |
 | [[New Relic]] | 100 GB/mo + 1 full user, no card | Never | Overage = full lockout till month end → 50 GB guard; traces ~8d retention |

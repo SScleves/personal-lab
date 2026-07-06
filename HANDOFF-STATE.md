@@ -20,7 +20,15 @@ Logstash demo-only · Gemini primary LLM, Groq fallback.
 
 ## Next actions (in order)
 
-1. Santi: git init, create public GitHub repo, first push (gitleaks hook already configured).
-2. Santi: OCI account signup (watch ARM capacity), Azure free account signup.
-3. Terraform: fill `terraform/modules/azure-state` first (backend must exist before remote state).
-4. Then Phase 2 per `vault/03 Phase 2 — Cluster and Agones.md`.
+1. ✅ 2026-07-06: repo pushed to github.com/SScleves/personal-lab (public), gitleaks green.
+   Commit identity = repo-local SScleves/santiagosanch@gmail.com (work email amended out pre-push).
+   Dynatrace lab tenant: https://fjl36225.sprint.apps.dynatracelabs.com (free until 2026-10).
+   NOTE: terraform workflow fails red until Azure account + ARM_* secrets exist — expected.
+2. ⚠️ 2026-07-06 PIVOT: **Azure DROPPED** (signup loop — gmail/GitHub MS-identity tangle).
+   Zero-Azure rewire done: state → HCP Terraform (backend.tf cloud block, TF_API_TOKEN secret),
+   site → GitHub Pages, probes → New Relic synthetics. azure-state module deleted.
+   HCP free-tier verification agent was in flight — result belongs in vault/tech/HCP Terraform.md.
+3. Santi: branch protection on main; clone on laptop + open vault/ in Obsidian; commit+push the rewire.
+4. Santi: HCP Terraform signup (vault/02 step B), OCI signup (quiet home region FIRST; report
+   which A1 shape granted — 4/24 vs 2/12). NO GCP — adds nothing (Gemini needs only AI Studio).
+5. Then terraform init against HCP, then Phase 2 per `vault/03 Phase 2 — Cluster and Agones.md`.
