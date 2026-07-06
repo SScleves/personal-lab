@@ -6,8 +6,12 @@ bullet of an Observability-Specialist job offer demonstrable. You (Claude) assis
 
 ## Session start protocol (in order, before doing anything)
 
-0. **If you are running on the Linux home server** (Docker media stack on the host):
-   your brief is `HOME-SERVER-MISSION.md` — read it after this file, it overrides the phase plan.
+0. **Which machine are you on?** Role dispatch — read your brief after this file:
+   - Linux home server (Docker media stack on the host) → `HOME-SERVER-MISSION.md`
+   - Alienware / Windows gaming laptop (Santi's games + Dutch-lessons folder) → `ALIENWARE-MISSION.md`
+   - Work machine or anything else → the phase plan (`HANDOFF-STATE.md` → `vault/08 Month Plan.md`).
+   If unsure, run an inventory (`docker ps` / look for `%USERPROFILE%\Downloads\Dutch Lessons`)
+   or ask Santi which machine this is.
 1. Read `HANDOFF-STATE.md` — the exact resume point. It supersedes anything else that looks like a plan.
 2. Read `vault/08 Month Plan.md` — the week-by-week schedule with exercises. `vault/00 Home.md` maps the rest.
 3. Check `vault/09 Signup Checklist.md` before asking Santi to sign up for anything — it may be done already.

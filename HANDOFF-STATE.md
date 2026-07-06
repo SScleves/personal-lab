@@ -25,9 +25,12 @@
    doc search (`search.html` + `_build/`) — **needs commit+push**.
 7. Doc-search convention: after changing any .md, rerun `powershell _build\build-search.ps1`
    and commit the regenerated `search.html` alongside.
-8. NEW parallel track: `HOME-SERVER-MISSION.md` (repo root) — the Linux home-server laptop's
-   Claude wires the Docker media stack into Dynatrace + New Relic via OTel (4 milestones).
-   Independent of the OCI cluster; can start immediately. Host-specific files stay OUT of this repo.
+8. PARALLEL TRACKS (machine briefs at repo root, dispatched by CLAUDE.md step 0):
+   - `HOME-SERVER-MISSION.md` — Linux box: Docker media stack → Dynatrace + New Relic via OTel
+     (4 milestones). Independent of the cluster; can start immediately.
+   - `ALIENWARE-MISSION.md` — games laptop: Dutch site → GitHub Pages (sanitize first!),
+     assess the 2 games as workloads (report only), set up as demo/player + k6 station.
+   Both: host-specific/personal files stay OUT of this public repo.
 
 ## Where we are
 
