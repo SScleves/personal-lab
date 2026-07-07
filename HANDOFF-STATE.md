@@ -28,8 +28,9 @@
 8. PARALLEL TRACKS (machine briefs at repo root, dispatched by CLAUDE.md step 0):
    - `HOME-SERVER-MISSION.md` — Linux box: Docker media stack → Dynatrace + New Relic via OTel
      (4 milestones). Independent of the cluster; can start immediately.
-   - `ALIENWARE-MISSION.md` — games laptop: Dutch site → GitHub Pages (sanitize first!),
-     assess the 2 games as workloads (report only), set up as demo/player + k6 station.
+   - `ALIENWARE-MISSION.md` — games laptop, GAMES ONLY (corrected 2026-07-07: Dutch folder is
+     on the MAIN machine, site already live): assess the 2 games as workloads (report only),
+     set up as demo/player + k6 station.
    Both: host-specific/personal files stay OUT of this public repo.
 9. 2026-07-07: SScleves estate expanded — werkplek (naming aligned, RUM candidate #1; Santi must
    verify Supabase RLS once), thetruth (hygiene + Santi's BOOK "Something Doesn't Fit" built as a
@@ -40,6 +41,13 @@
     how-to: vault/tech/GitHub Estate Guide.md ⭐. Terraform reconciliation skeleton:
     terraform/modules/github-estate (import-first, commented until PAT exists).
     PENDING SANTI: enable Pages on thetruth (Settings→Pages→main→root) — book 404s until then.
+11. 2026-07-07 later: thetruth got the visionary design (mandala/aurora/scanlines) + POSTS system
+    (posts-src/*.md → _build/build-posts.ps1 → live; guide = UPDATING.md). werkplek branding
+    finished (data identifiers kept as 'flowdeck' for compat — NEVER rename those). numbers +
+    my-awesome-website repos: Santi deleting (dupes/empty). dutch-lessons staged+committed at
+    C:\Repos\SScleves\dutch-lessons (sanitized: BYOK Anthropic key input only, no secrets) —
+    Alienware Mission A completed from the work machine; PENDING SANTI: create repo + push +
+    enable Pages. Launch card added to vault/tech/GitHub Estate Guide.md §2b.
 
 ## Where we are
 

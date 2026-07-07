@@ -26,7 +26,13 @@ apply here, plus the stricter ones below.
    Show Santi the inventory; confirm scope before building.
 3. Execute the milestones below in order. One milestone per session is fine.
 4. At the end: update `HANDOFF-STATE.md` with GENERIC progress only ("M1 done, both backends
-   receiving") — no host details — rebuild `search.html` if you changed docs, remind Santi to push.
+   receiving") — no host details — and remind Santi to commit+push. Linux notes:
+   - Do NOT try to rebuild `search.html` — the build script is PowerShell/Windows-only;
+     the next Windows session will refresh it.
+   - Before the FIRST commit from this box, set the repo-local identity
+     (`git config user.name "SScleves"` / `git config user.email "santiagosanch@gmail.com"`)
+     and verify with `git log --format='%an %ae' -1` after committing — the work-email
+     trap has bitten once already.
 
 ## Credentials you must ask Santi for (never mint or guess)
 
@@ -99,7 +105,9 @@ service:
       exporters: [otlphttp/dynatrace, otlphttp/newrelic]
 ```
 
-Start: `docker compose up -d` → `docker logs otelcol` must show no export errors after 2 minutes.
+Start: `docker compose up -d` (older Docker: `docker-compose up -d` — check which exists with
+`docker compose version || docker-compose version`) → `docker logs otelcol` must show no export
+errors after 2 minutes.
 **Verify in both UIs** (Dynatrace: Metrics browser, search `container.`; New Relic: Metrics
 explorer, filter `deployment.environment = home-server`). 📸 both. Milestone done = the same
 per-container CPU/memory visible in two vendors.

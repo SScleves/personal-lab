@@ -29,9 +29,19 @@ If push says `rejected (non-fast-forward)` → you forgot `git pull` first.
 | **personal-lab** | The lab: this vault, missions, Terraform, CI | Not a website; `search.html` from any clone |
 | **thetruth** | The site + the book *Something Doesn't Fit* | Pages, deploy-from-branch (`main` /root) |
 | **werkplek** | The notes/productivity PWA ("the notes like this") | Pages via Actions build (push = auto-deploy) |
-| **dutch-lessons** | (planned, Alienware Mission A) the Dutch site | Pages, deploy-from-branch |
-| my-awesome-website, numbers | older experiments | leave or archive (Settings → Archive) |
+| **dutch-lessons** | the Dutch study site (single self-contained index.html) | Pages, deploy-from-branch |
+| ~~my-awesome-website, numbers~~ | deleted 2026-07 (empty shell + duplicate template) | — |
 | **Docker/Plex box** | deliberately has NO repo — configs stay in `~/observability/` on the box | reads the missions from personal-lab ([[Home Server Docker Stack]]) |
+
+## 2b. Launch card — every app: where it runs + how to run it locally
+
+| App | Live URL | Run locally | Update guide |
+|---|---|---|---|
+| The Truth + book | https://sscleves.github.io/thetruth/ | double-click `index.html` | `UPDATING.md` in that repo |
+| werkplek | https://sscleves.github.io/werkplek/ | `npm install` then `npm run dev` (needs Node) | its `README.md` |
+| Dutch site | https://sscleves.github.io/dutch-lessons/ | double-click `index.html` | its `README.md` (add-a-lesson recipe included) |
+| This vault | not a website | Obsidian → open `vault/` folder | [[00 Home]] |
+| Lab infra | not a website | `terraform plan` in `envs/lab` | [[08 Month Plan]] |
 
 ## 3. Websites = GitHub Pages, two flavors you own
 
