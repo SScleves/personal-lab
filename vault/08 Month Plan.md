@@ -5,8 +5,11 @@ tags: [plan, moc]
 # 🗓️ The Month Plan — 4 weeks + stretch, every tech with exercises
 
 Each week ends with something **visibly monitored** (the standing rule). Effort dial per week noted.
-Detailed clicks live in the phase notes; this is the schedule + the exercises that build skill, not
-just infrastructure. Signups: [[09 Signup Checklist]].
+This is the schedule + exercises; **execution happens via the micro-step runbooks** —
+[[R1 Week 1 — OCI account, server, k3s|R1]] · [[R2 Week 2 — Docker, Agones, chaos|R2]] ·
+[[R3 Week 3 — OTel fan-out, Dynatrace SLOs, Workflow|R3]] · [[R4 Week 4 — New Relic, Grafana, the comparison|R4]] ·
+[[R5 Stretch — Databricks, Airflow, Gemini, AI Foundry|R5]] — under the rules in `GUARDRAILS.md`.
+Signups: [[09 Signup Checklist]].
 
 ## Week 1 — Foundations: accounts, state, THE SERVER (effort: low, one design evening)
 

@@ -5,6 +5,11 @@
 
 ## EXACT resume point
 
+0. NEW (2026-07-07 night): **GUARDRAILS.md** (15 hard rules) + execution protocol in CLAUDE.md +
+   **five micro-step runbooks** in `vault/runbooks/` (R1 OCI/k3s · R2 Agones · R3 OTel/Dynatrace ·
+   R4 New Relic/Grafana/comparison · R5 Databricks/Airflow/Gemini/AI-Foundry). ALL build work
+   follows a runbook, step-by-verify-step. [VERIFY-FIRST] markers = check live before executing.
+
 1. GitHub repo live + gitleaks green ✅. Zero-Azure rewire done in the working tree —
    **verify it was committed AND pushed** (`git status` must be clean, `git log origin/main -1`
    must show the rewire commit). If not: add/commit/push first.

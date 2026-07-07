@@ -1,5 +1,7 @@
 # CLAUDE.md — read this first, every session, on every machine
 
+**Companion file: `GUARDRAILS.md` — 15 hard rules. Read it second, follow it absolutely.**
+
 This is **Santi's personal observability lab**: Terraform + k3s + Agones game servers on OCI
 free tier, observed by Dynatrace/New Relic/Grafana/ELK via OpenTelemetry, for €0, to make every
 bullet of an Observability-Specialist job offer demonstrable. You (Claude) assist; Santi operates.
@@ -46,6 +48,20 @@ bullet of an Observability-Specialist job offer demonstrable. You (Claude) assis
   Bedrock and Xonotic examples rejected (ARM). Agones version pinned — arm64 is Alpha-tier.
 - Logstash = demo-days only (RAM); Kibana alerting can't notify on free (index/server-log
   connectors only) — alerts that fire live in Dynatrace/New Relic/Grafana IRM.
+
+## Execution protocol (how ANY build work is done here — no exceptions)
+
+1. Find the runbook: `vault/runbooks/R<N> …` for the current week (index in `vault/08 Month Plan.md`).
+2. Execute step by step: each step = one action + one verify command. Do not batch ahead.
+   A step's verify fails twice → STOP, diagnose out loud, ask Santi if still stuck.
+3. Steps marked **[SANTI]** are his (browser/signup/push) — hand him exact URL + clicks, wait.
+   Steps marked **[GATE]** are decision points — present the evidence, get his call.
+   Steps marked **[VERIFY-FIRST]** contain assumptions (UI labels, endpoints, versions) that
+   MUST be checked live before executing — never guess them.
+4. terraform: `fmt → validate → plan` and READ the plan aloud (n add / n change / n destroy,
+   what and why) before any apply. Destroys need Santi's explicit OK.
+5. End of block: capture the 📸 evidence the runbook names, tick the werkplek task, update
+   `HANDOFF-STATE.md`, rebuild `search.html` (Windows only), remind Santi to push.
 
 ## How Santi works (match this or the session drags)
 

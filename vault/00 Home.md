@@ -11,6 +11,10 @@ this vault is the **how**. Open the graph view — every note links to what it t
 
 - **[[08 Month Plan]]** — the week-by-week schedule with exercises per technology ⭐
 - **[[09 Signup Checklist]]** — every account, its status, and when it's needed
+- **Runbooks (micro-steps, do→verify, for execution)**: [[R1 Week 1 — OCI account, server, k3s]] ·
+  [[R2 Week 2 — Docker, Agones, chaos]] · [[R3 Week 3 — OTel fan-out, Dynatrace SLOs, Workflow]] ·
+  [[R4 Week 4 — New Relic, Grafana, the comparison]] · [[R5 Stretch — Databricks, Airflow, Gemini, AI Foundry]]
+- Hard rules: `GUARDRAILS.md` (repo root) + the execution protocol in `CLAUDE.md`
 
 ## Phases (the detailed guides, in order)
 
